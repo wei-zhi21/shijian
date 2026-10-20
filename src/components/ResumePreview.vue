@@ -16,7 +16,7 @@ defineProps({
       <span class="text-xs text-slate-400">编辑左侧表单将实时同步</span>
     </div>
 
-    <div class="paper-card bg-white rounded-lg overflow-hidden" style="min-height: 620px">
+    <div id="resume-pdf" class="paper-card bg-white rounded-lg overflow-hidden" style="min-height: 620px">
       <template v-if="activeTemplate === 'modern'">
         <TemplateModern :resume="resume" />
       </template>

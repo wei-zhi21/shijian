@@ -1,4 +1,6 @@
 import { resume } from './resume'
+import { jsPDF } from 'jspdf'
+import html2canvas from 'html2canvas'
 
 // 将简历数据序列化为 Markdown
 export function toMarkdown(data = resume) {
@@ -55,4 +57,34 @@ export function downloadMarkdown() {
   a.click()
   document.body.removeChild(a)
   URL.revokeObjectURL(url)
+}
+
+// 触发下载 .pdf 文件（渲染预览区为图片再入 PDF，保证中文版式）
+export async function downloadPDF() {
+  const el = document.getElementById('resume-pdf')
+  if (!el) return
+  const canvas = await html2canvas(el, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: '#ffffff',
+    logging: false
+  })
+  const imgData = canvas.toDataURL('image/png')
+  const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
+  const pdfWidth = pdf.internal.pageSize.getWidth()
+  const pdfHeight = pdf.internal.pageSize.getHeight()
+  const imgWidth = pdfWidth
+  const imgHeight = (canvas.height * imgWidth) / canvas.width
+
+  let heightLeft = imgHeight
+  let position = 0
+  pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
+  heightLeft -= pdfHeight
+  while (heightLeft > 0) {
+    position -= pdfHeight
+    pdf.addPage()
+    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight)
+    heightLeft -= pdfHeight
+  }
+  pdf.save(`${resume.basic.name || '简历'}.pdf`)
 }
