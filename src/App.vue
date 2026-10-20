@@ -1,5 +1,6 @@
 <script setup>
 import EditorView from './components/EditorView.vue'
+import { downloadMarkdown } from './export'
 </script>
 
 <template>
@@ -22,7 +23,7 @@ import EditorView from './components/EditorView.vue'
           <button class="px-3 py-1.5 text-sm rounded-lg border border-slate-200 hover:bg-slate-50"
             title="导出为 PDF（功能开发中）">导出 PDF</button>
           <button class="px-3 py-1.5 text-sm rounded-lg border border-slate-200 hover:bg-slate-50"
-            title="导出为 Markdown（功能开发中）">导出 MD</button>
+            title="导出为 Markdown" @click="downloadMarkdown">导出 MD</button>
           <button class="px-4 py-1.5 text-sm rounded-lg bg-indigo-600 text-white hover:bg-indigo-700"
             title="一键生成简历（功能开发中）">生成简历</button>
         </div>
