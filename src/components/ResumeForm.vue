@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { t } from '../i18n'
 
 defineProps({
   resume: { type: Object, required: true }
@@ -37,130 +38,145 @@ function addExperience(r) {
 function removeExperience(r, i) {
   if (r.experiences.length > 1) r.experiences.splice(i, 1)
 }
+
+const sections = [
+  { key: 'formBasic', label: 'formBasic', num: 1 },
+  { key: 'formIntent', label: 'formIntent', num: 2 },
+  { key: 'formEducation', label: 'formEducation', num: 3 },
+  { key: 'formExperience', label: 'formExperience', num: 4 },
+  { key: 'formSkills', label: 'formSkills', num: 5 },
+  { key: 'formLanguages', label: 'formLanguages', num: 6 },
+  { key: 'formSummary', label: 'formSummary', num: 7 }
+]
 </script>
 
 <template>
   <div class="bg-white rounded-xl border border-slate-200 p-5 space-y-6">
+    <!-- 1 基本信息 -->
     <h2 class="text-base font-semibold flex items-center gap-2">
       <span class="w-5 h-5 rounded bg-indigo-100 text-indigo-600 text-xs flex items-center justify-center">1</span>
-      基本信息
+      {{ t('formBasic') }}
     </h2>
     <div class="grid grid-cols-2 gap-4">
       <div>
-        <label class="block text-sm text-slate-600 mb-1">姓名</label>
+        <label class="block text-sm text-slate-600 mb-1">{{ t('name') }}</label>
         <input v-model="resume.basic.name"
           class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none"
-          placeholder="请输入姓名" />
+          :placeholder="t('phName')" />
       </div>
       <div>
-        <label class="block text-sm text-slate-600 mb-1">联系电话</label>
+        <label class="block text-sm text-slate-600 mb-1">{{ t('phone') }}</label>
         <input v-model="resume.basic.phone"
           class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none"
-          placeholder="请输入手机号" />
+          :placeholder="t('phPhone')" />
       </div>
       <div>
-        <label class="block text-sm text-slate-600 mb-1">邮箱</label>
+        <label class="block text-sm text-slate-600 mb-1">{{ t('email') }}</label>
         <input v-model="resume.basic.email"
           class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none"
-          placeholder="请输入邮箱" />
+          :placeholder="t('phEmail')" />
       </div>
       <div>
-        <label class="block text-sm text-slate-600 mb-1">求职城市</label>
+        <label class="block text-sm text-slate-600 mb-1">{{ t('city') }}</label>
         <input v-model="resume.basic.city"
           class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none"
-          placeholder="如：北京" />
+          :placeholder="t('phCity')" />
       </div>
     </div>
 
+    <!-- 2 求职意向 -->
     <h2 class="text-base font-semibold flex items-center gap-2">
       <span class="w-5 h-5 rounded bg-indigo-100 text-indigo-600 text-xs flex items-center justify-center">2</span>
-      求职意向
+      {{ t('formIntent') }}
     </h2>
     <div class="grid grid-cols-3 gap-4">
       <div>
-        <label class="block text-sm text-slate-600 mb-1">目标岗位</label>
+        <label class="block text-sm text-slate-600 mb-1">{{ t('position') }}</label>
         <input v-model="resume.intent.position"
           class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none"
-          placeholder="如：前端开发工程师" />
+          :placeholder="t('phPosition')" />
       </div>
       <div>
-        <label class="block text-sm text-slate-600 mb-1">期望薪资</label>
+        <label class="block text-sm text-slate-600 mb-1">{{ t('salary') }}</label>
         <input v-model="resume.intent.salary"
           class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none"
-          placeholder="如：15-20K" />
+          :placeholder="t('phSalary')" />
       </div>
       <div>
-        <label class="block text-sm text-slate-600 mb-1">到岗时间</label>
+        <label class="block text-sm text-slate-600 mb-1">{{ t('startTime') }}</label>
         <input v-model="resume.intent.start"
           class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-indigo-200 focus:border-indigo-400 outline-none"
-          placeholder="如：一周内" />
+          :placeholder="t('phStart')" />
       </div>
     </div>
 
+    <!-- 3 教育经历 -->
     <h2 class="text-base font-semibold flex items-center gap-2">
       <span class="w-5 h-5 rounded bg-indigo-100 text-indigo-600 text-xs flex items-center justify-center">3</span>
-      教育经历
+      {{ t('formEducation') }}
     </h2>
     <div v-for="(edu, i) in resume.education" :key="i" class="border border-slate-200 rounded-lg p-4 space-y-3">
       <div class="flex justify-end">
         <button v-if="resume.education.length > 1" @click="removeEducation(resume, i)"
-          class="text-xs text-red-500 hover:text-red-700">删除</button>
+          class="text-xs text-red-500 hover:text-red-700">{{ t('del') }}</button>
       </div>
       <div class="grid grid-cols-2 gap-3">
         <div>
-          <label class="block text-sm text-slate-600 mb-1">学校</label>
-          <input v-model="edu.school" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" placeholder="学校名称" />
+          <label class="block text-sm text-slate-600 mb-1">{{ t('school') }}</label>
+          <input v-model="edu.school" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" :placeholder="t('phSchool')" />
         </div>
         <div>
-          <label class="block text-sm text-slate-600 mb-1">专业</label>
-          <input v-model="edu.major" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" placeholder="专业名称" />
+          <label class="block text-sm text-slate-600 mb-1">{{ t('major') }}</label>
+          <input v-model="edu.major" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" :placeholder="t('phMajor')" />
         </div>
         <div>
-          <label class="block text-sm text-slate-600 mb-1">起止时间</label>
-          <input v-model="edu.period" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" placeholder="2022.09 - 2026.06" />
+          <label class="block text-sm text-slate-600 mb-1">{{ t('period') }}</label>
+          <input v-model="edu.period" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" :placeholder="t('phPeriod')" />
         </div>
         <div>
-          <label class="block text-sm text-slate-600 mb-1">学历</label>
-          <input v-model="edu.degree" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" placeholder="本科" />
+          <label class="block text-sm text-slate-600 mb-1">{{ t('degree') }}</label>
+          <input v-model="edu.degree" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" :placeholder="t('phDegree')" />
         </div>
       </div>
     </div>
-    <button @click="addEducation(resume)" class="text-sm text-indigo-600 hover:text-indigo-800">+ 添加教育经历</button>
+    <button @click="addEducation(resume)" class="text-sm text-indigo-600 hover:text-indigo-800">{{ t('addEducation') }}</button>
 
+    <!-- 4 工作/项目经历 -->
     <h2 class="text-base font-semibold flex items-center gap-2">
       <span class="w-5 h-5 rounded bg-indigo-100 text-indigo-600 text-xs flex items-center justify-center">4</span>
-      工作 / 项目经历
+      {{ t('formExperience') }}
     </h2>
     <div v-for="(exp, i) in resume.experiences" :key="i" class="border border-slate-200 rounded-lg p-4 space-y-3">
       <div class="flex justify-end">
         <button v-if="resume.experiences.length > 1" @click="removeExperience(resume, i)"
-          class="text-xs text-red-500 hover:text-red-700">删除</button>
+          class="text-xs text-red-500 hover:text-red-700">{{ t('del') }}</button>
       </div>
       <div class="grid grid-cols-2 gap-3">
         <div>
-          <label class="block text-sm text-slate-600 mb-1">公司 / 项目</label>
-          <input v-model="exp.org" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" placeholder="公司或项目名称" />
+          <label class="block text-sm text-slate-600 mb-1">{{ t('org') }}</label>
+          <input v-model="exp.org" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" :placeholder="t('phOrg')" />
         </div>
         <div>
-          <label class="block text-sm text-slate-600 mb-1">职位 / 角色</label>
-          <input v-model="exp.role" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" placeholder="职位名称" />
+          <label class="block text-sm text-slate-600 mb-1">{{ t('role') }}</label>
+          <input v-model="exp.role" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" :placeholder="t('phRole')" />
         </div>
         <div class="col-span-2">
-          <label class="block text-sm text-slate-600 mb-1">起止时间</label>
-          <input v-model="exp.time" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" placeholder="2024.07 - 至今" />
+          <label class="block text-sm text-slate-600 mb-1">{{ t('period') }}</label>
+          <input v-model="exp.time" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" :placeholder="t('phTime')" />
         </div>
         <div class="col-span-2">
-          <label class="block text-sm text-slate-600 mb-1">经历描述（建议用 STAR 法则）</label>
+          <label class="block text-sm text-slate-600 mb-1">{{ t('expDesc') }}</label>
           <textarea v-model="exp.desc" rows="3" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none resize-none"
-            placeholder="情境 / 任务 / 行动 / 结果"></textarea>
+            :placeholder="t('phDesc')"></textarea>
         </div>
       </div>
     </div>
-    <button @click="addExperience(resume)" class="text-sm text-indigo-600 hover:text-indigo-800">+ 添加经历</button>
+    <button @click="addExperience(resume)" class="text-sm text-indigo-600 hover:text-indigo-800">{{ t('addExperience') }}</button>
 
+    <!-- 5 专业技能 -->
     <h2 class="text-base font-semibold flex items-center gap-2">
       <span class="w-5 h-5 rounded bg-indigo-100 text-indigo-600 text-xs flex items-center justify-center">5</span>
-      专业技能
+      {{ t('formSkills') }}
     </h2>
     <div class="flex flex-wrap gap-2 items-center">
       <span v-for="(s, i) in resume.skills" :key="i"
@@ -171,14 +187,15 @@ function removeExperience(r, i) {
       <div class="inline-flex items-center gap-1">
         <input v-model="newSkill" @keyup.enter="addSkill(resume)"
           class="w-32 border border-dashed border-slate-300 rounded-full px-3 py-1 text-sm outline-none"
-          placeholder="输入技能" />
-        <button @click="addSkill(resume)" class="px-2 py-1 rounded-full border border-dashed border-slate-300 text-sm text-slate-400 hover:text-indigo-600">+ 添加</button>
+          :placeholder="t('phSkill')" />
+        <button @click="addSkill(resume)" class="px-2 py-1 rounded-full border border-dashed border-slate-300 text-sm text-slate-400 hover:text-indigo-600">{{ t('add') }}</button>
       </div>
     </div>
 
+    <!-- 6 语言能力 -->
     <h2 class="text-base font-semibold flex items-center gap-2">
       <span class="w-5 h-5 rounded bg-indigo-100 text-indigo-600 text-xs flex items-center justify-center">6</span>
-      语言能力
+      {{ t('formLanguages') }}
     </h2>
     <div class="flex flex-wrap gap-2 items-center">
       <span v-for="(l, i) in resume.languages" :key="i"
@@ -189,23 +206,24 @@ function removeExperience(r, i) {
       <div class="inline-flex items-center gap-1">
         <input v-model="newLang" @keyup.enter="addLang(resume)"
           class="w-32 border border-dashed border-slate-300 rounded-full px-3 py-1 text-sm outline-none"
-          placeholder="如：英语 CET-6" />
-        <button @click="addLang(resume)" class="px-2 py-1 rounded-full border border-dashed border-slate-300 text-sm text-slate-400 hover:text-indigo-600">+ 添加</button>
+          :placeholder="t('phLang')" />
+        <button @click="addLang(resume)" class="px-2 py-1 rounded-full border border-dashed border-slate-300 text-sm text-slate-400 hover:text-indigo-600">{{ t('add') }}</button>
       </div>
     </div>
 
+    <!-- 7 自我评价 -->
     <h2 class="text-base font-semibold flex items-center gap-2">
       <span class="w-5 h-5 rounded bg-indigo-100 text-indigo-600 text-xs flex items-center justify-center">7</span>
-      自我评价
+      {{ t('formSummary') }}
     </h2>
     <textarea v-model="resume.summary" rows="3"
       class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none resize-none"
-      placeholder="简要介绍你的优势与求职意愿（可基于 STAR 法则优化）"></textarea>
+      :placeholder="t('phSummary')"></textarea>
 
     <div class="pt-2">
       <button @click="$emit('save')"
         class="w-full py-2.5 rounded-lg bg-indigo-600 text-white text-sm hover:bg-indigo-700">
-        保存简历
+        {{ t('save') }}
       </button>
     </div>
   </div>
