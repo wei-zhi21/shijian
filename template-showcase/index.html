@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>优秀简历模板展示 · 就业知识体系</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%233b82f6'/%3E%3Ctext x='16' y='22' font-size='16' font-family='sans-serif' fill='white' text-anchor='middle' font-weight='bold'%3E简%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --ink:#1f2937; --muted:#6b7280; --line:#e5e7eb; --accent:#2563eb;
+    --accent-soft:#eff6ff; --bg:#f3f4f6; --card:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+    background:var(--bg); color:var(--ink); line-height:1.6;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:40px 20px 64px;}
+  .hero{
+    background:linear-gradient(135deg,#1e3a8a 0%,#2563eb 60%,#3b82f6 100%);
+    color:#fff; border-radius:20px; padding:44px 40px; margin-bottom:40px;
+    position:relative; overflow:hidden;
+  }
+  .hero::after{content:""; position:absolute; right:-60px; top:-60px; width:240px; height:240px;
+    border-radius:50%; background:rgba(255,255,255,.08);}
+  .hero .tag{display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.3);
+    padding:3px 14px; border-radius:999px; font-size:13px; margin-bottom:16px; letter-spacing:1px;}
+  .hero h1{font-size:32px; font-weight:800; margin-bottom:12px; letter-spacing:.5px;}
+  .hero p{max-width:680px; color:#dbeafe; font-size:15px;}
+  .grid{display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease;}
+  .card:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(31,41,55,.1);}
+  .preview{height:200px; background:var(--accent-soft); display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden; border-bottom:1px solid var(--line);}
+  .mini{border-radius:8px; box-shadow:0 8px 24px rgba(31,41,55,.14); overflow:hidden; background:#fff;
+    width:88px; height:124px; transform:rotate(-3deg);}
+  .mini.b2{transform:rotate(2deg);}
+  .mini.b3{transform:rotate(-1deg);}
+  .mini.b4{transform:rotate(3deg);}
+  .mini .ph{width:100%; height:22px;}
+  .mini .ph.p1{background:#1e40af;} .mini .ph.p2{background:#312e81;}
+  .mini .ph.p3{background:#b45309;} .mini .ph.p4{background:#0f766e;}
+  .mini .ln{background:var(--line); height:4px; border-radius:2px; margin:7px 9px 0;}
+  .mini .ln.w60{width:60%;} .mini .ln.w80{width:80%;}
+  .card .body{padding:18px 20px 20px;}
+  .card .body h3{font-size:17px; font-weight:700; margin-bottom:4px;}
+  .card .body .desc{font-size:13.5px; color:var(--muted); margin-bottom:12px; min-height:40px;}
+  .card .body a{display:inline-flex; align-items:center; gap:6px; color:var(--accent); font-weight:600;
+    font-size:14px; text-decoration:none;}
+  .card .body a:hover{text-decoration:underline;}
+  .section-title{font-size:20px; font-weight:800; margin:44px 0 18px; display:flex; align-items:center; gap:10px;}
+  .section-title::before{content:""; width:5px; height:22px; background:var(--accent); border-radius:3px;}
+  .research-card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:26px 28px;
+    display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;}
+  .research-card h3{font-size:18px; font-weight:700; margin-bottom:6px;}
+  .research-card p{font-size:14px; color:var(--muted); max-width:640px;}
+  .research-card a{background:var(--accent); color:#fff; padding:10px 22px; border-radius:10px; text-decoration:none;
+    font-weight:600; font-size:14px; white-space:nowrap;}
+  .research-card a:hover{background:#1d4ed8;}
+  .note{font-size:13px; color:var(--muted); margin-top:32px; text-align:center;}
+  .banner{grid-column:1 / -1; background:var(--card); border:1px dashed #93c5fd; border-radius:16px;
+    padding:18px 24px; font-size:14px; color:#374151;}
+  .banner strong{color:#1d4ed8;}
+  @media (max-width:640px){
+    .grid{grid-template-columns:1fr;}
+    .hero{padding:32px 24px;} .hero h1{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <span class="tag">职业规划项目 · 求职简历系统</span>
+      <h1>优秀求职简历模板展示</h1>
+      <p>基于“什么是好简历”的研究结论，落地四套通用多岗位模板：分别对应经典商务、现代双栏、创意简约、数据成果四种风格。均可直接浏览器打开、A4 打印或导出 PDF，示例内容遵循 STAR 法则与 ATS 友好规范。</p>
+    </section>
+
+    <h2 class="section-title">四套简历模板</h2>
+    <div class="grid">
+      <article class="card">
+        <div class="preview"><div class="mini"><div class="ph p1"></div><div class="ln w80"></div><div class="ln w60"></div><div class="ln w80"></div><div class="ln w60"></div></div></div>
+        <div class="body">
+          <h3>模板一 · 经典单栏商务</h3>
+          <p class="desc">稳重正式的纵向单栏版式，蓝金配色，适合国企、传统行业、行政与通用职能岗。信息层级清晰，A4 打印友好。</p>
+          <a href="template1-classic.html">打开模板 →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="preview"><div class="mini b2"><div class="ph p2"></div><div class="ln w60"></div><div class="ln w80"></div><div class="ln w60"></div><div class="ln w80"></div></div></div>
+        <div class="body">
+          <h3>模板二 · 现代双栏侧边</h3>
+          <p class="desc">深色侧边栏承载个人信息与技能，右侧呈现经历，主流互联网求职风格，适配技术、产品、运营等多岗位。</p>
+          <a href="template2-modern.html">打开模板 →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="preview"><div class="mini b3"><div class="ph p3"></div><div class="ln w80"></div><div class="ln w60"></div><div class="ln w80"></div><div class="ln w60"></div></div></div>
+        <div class="body">
+          <h3>模板三 · 创意简约</h3>
+          <p class="desc">暖橙主色、大面积留白与图形化技能条，个性突出，适合设计、运营、新媒体与创意方向。</p>
+          <a href="template3-creative.html">打开模板 →</a>
+        </div>
+      </article>
+      <article class="card">
+        <div class="preview"><div class="mini b4"><div class="ph p4"></div><div class="ln w80"></div><div class="ln w60"></div><div class="ln w80"></div><div class="ln w60"></div></div></div>
+        <div class="body">
+          <h3>模板四 · 数据成果驱动</h3>
+          <p class="desc">以量化指标为核心的数据卡片版式，突出可衡量的成果，适合技术、产品、销售等看重业绩的岗位。</p>
+          <a href="template4-data.html">打开模板 →</a>
+        </div>
+      </article>
+      <div class="banner">
+        <strong>模板与项目兼容说明：</strong> 四套模板均为自包含单文件 HTML，可直接在浏览器打开并打印。如需接入项目内 Vue 模板（<code>src/templates/</code>），可基于每套模板的视觉样式与本项目的数据结构（basic / intent / education / experiences / skills / languages / summary）进行移植。
+      </div>
+    </div>
+
+    <h2 class="section-title">好简历研究 · 就业知识体系</h2>
+    <div class="research-card">
+      <div>
+        <h3>什么是好简历？研究展示页</h3>
+        <p>系统梳理“好简历”的标准与底层逻辑，并融入就业指导理论依据（霍兰德职业兴趣、胜任力模型、STAR 法则、ATS 关键词等）与参考文献，形成完整知识体系。</p>
+      </div>
+      <a href="research.html">查看研究页 →</a>
+    </div>
+
+    <p class="note">职业规划项目 · 一键式求职简历生成系统 · 就业指导课程期末考核</p>
+  </div>
+</body>
+</html>

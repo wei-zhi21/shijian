@@ -16,6 +16,12 @@ export function toMarkdown(data = resume) {
   data.education.forEach((e) => {
     const parts = [e.school, e.major, e.degree].filter(Boolean).join(' · ')
     if (parts) lines.push(`- ${parts}${e.period ? `（${e.period}）` : ''}`)
+    if (e.courses || e.gpa || e.honors) {
+      const meta = [e.courses ? `主修课程：${e.courses}` : '', e.gpa ? `GPA ${e.gpa}` : '', e.honors]
+        .filter(Boolean)
+        .join('；')
+      lines.push(`  - ${meta}`)
+    }
   })
   lines.push('')
 

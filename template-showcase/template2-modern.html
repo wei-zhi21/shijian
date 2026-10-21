@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>简历模板二 · 现代双栏侧边</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2331281e'/%3E%3Ctext x='16' y='22' font-size='16' font-family='sans-serif' fill='white' text-anchor='middle' font-weight='bold'%3E简%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --sidebar:#2d2a3e; --sidebar-soft:#3b3852; --accent:#8ab4f8; --accent-strong:#6ea8ff;
+    --ink:#26272b; --muted:#6b6f76; --line:#e8e8ec; --bg:#eef0f4; --paper:#fff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",system-ui,sans-serif; color:var(--ink);}
+
+  .sheet{width:794px; min-height:1123px; margin:32px auto; background:var(--paper);
+    box-shadow:0 10px 40px rgba(0,0,0,.15); display:flex; overflow:hidden;}
+
+  /* 侧边栏 */
+  .side{width:250px; background:linear-gradient(180deg,var(--sidebar) 0%,var(--sidebar-soft) 100%);
+    color:#eef1f7; padding:40px 26px; flex-shrink:0;}
+  .avatar{width:108px; height:108px; border-radius:50%; background:var(--accent); color:#16213b;
+    display:flex; align-items:center; justify-content:center; font-size:44px; font-weight:700;
+    margin:0 auto 18px; box-shadow:0 6px 18px rgba(0,0,0,.25);}
+  .side .name{font-size:22px; font-weight:700; text-align:center; letter-spacing:2px;}
+  .side .role{text-align:center; color:var(--accent); font-size:13px; margin-top:5px; letter-spacing:1px;}
+  .side-sec{margin-top:26px;}
+  .side-sec h3{font-size:12px; letter-spacing:2px; color:var(--accent); margin-bottom:12px;
+    padding-bottom:6px; border-bottom:1px solid rgba(255,255,255,.15); text-transform:uppercase;}
+  .side-sec .row{font-size:13px; line-height:1.8; color:#dfe3ec; word-break:break-all;}
+  .side-sec .row b{display:block; font-size:12px; color:#b9c2d8; font-weight:600;}
+  .skills .sk{margin-bottom:10px;}
+  .skills .sk .lbl{display:flex; justify-content:space-between; font-size:12px; color:#dfe3ec; margin-bottom:5px;}
+  .skills .sk .lbl span:last-child{color:#9aa5bd;}
+  .bar{height:5px; background:rgba(255,255,255,.15); border-radius:3px; overflow:hidden;}
+  .bar i{display:block; height:100%; background:var(--accent); border-radius:3px;}
+
+  /* 主区 */
+  .main{flex:1; padding:40px 34px;}
+  .main-sec{margin-bottom:24px;}
+  .main-sec h2{font-size:15px; font-weight:700; color:var(--sidebar); letter-spacing:1px;
+    display:flex; align-items:center; gap:8px; margin-bottom:14px;}
+  .main-sec h2::before{content:""; width:4px; height:16px; background:var(--accent-strong); border-radius:2px;}
+  .item{margin-bottom:16px;}
+  .item:last-child{margin-bottom:0;}
+  .item .hd{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:3px;}
+  .item .hd .t{font-size:14px; font-weight:600; color:#1f2230;}
+  .item .hd .t em{font-style:normal; color:var(--accent-strong); font-weight:600;}
+  .item .hd .tm{font-size:12px; color:var(--muted); white-space:nowrap;}
+  .item .sub{font-size:12.5px; color:var(--muted); margin-bottom:5px;}
+  .item p{font-size:13px; color:#3a3d46; line-height:1.7;}
+  .summary{font-size:13px; color:#3a3d46; line-height:1.85; text-align:justify;}
+  .pills{display:flex; flex-wrap:wrap; gap:8px;}
+  .pill{background:#eef3fb; color:var(--sidebar); border:1px solid #d7e2f4;
+    padding:3px 11px; border-radius:999px; font-size:12px;}
+
+  /* 打印 */
+  @media print{
+    body{background:#fff;}
+    .sheet{box-shadow:none; margin:0; width:100%; min-height:auto;}
+    @page{size:A4; margin:10mm;}
+  }
+  @media (max-width:820px){
+    .sheet{width:100%; margin:0; min-height:auto; flex-direction:column;}
+    .side{width:100%;}
+  }
+</style>
+</head>
+<body>
+  <div class="sheet">
+    <!-- 侧边栏 -->
+    <aside class="side">
+      <div class="avatar">李</div>
+      <div class="name">李 然</div>
+      <div class="role">前端开发工程师</div>
+
+      <div class="side-sec">
+        <h3>联系方式</h3>
+        <div class="row"><b>电话</b>186-1234-5678</div>
+        <div class="row"><b>邮箱</b>liran@email.com</div>
+        <div class="row"><b>城市</b>上海</div>
+        <div class="row"><b>到岗</b>一周内</div>
+      </div>
+
+      <div class="side-sec skills">
+        <h3>专业技能</h3>
+        <div class="sk"><div class="lbl"><span>Vue 3 / React</span><span>90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+        <div class="sk"><div class="lbl"><span>TypeScript</span><span>85%</span></div><div class="bar"><i style="width:85%"></i></div></div>
+        <div class="sk"><div class="lbl"><span>CSS / 布局</span><span>88%</span></div><div class="bar"><i style="width:88%"></i></div></div>
+        <div class="sk"><div class="lbl"><span>Node.js</span><span>70%</span></div><div class="bar"><i style="width:70%"></i></div></div>
+      </div>
+
+      <div class="side-sec">
+        <h3>语言能力</h3>
+        <div class="row"><b>中文</b>母语</div>
+        <div class="row"><b>英语</b>CET-6 · 可阅读英文文档</div>
+      </div>
+    </aside>
+
+    <!-- 主区 -->
+    <main class="main">
+      <div class="main-sec">
+        <h2>个人简介</h2>
+        <p class="summary">两年 Web 前端开发经验，专注 Vue / React 技术栈与前端工程化。主导过 3 个中大型业务项目的前端架构，推动组件库建设使开发效率提升 40%；注重代码质量与用户体验，具备良好的团队协作与跨端适配能力。</p>
+      </div>
+
+      <div class="main-sec">
+        <h2>项目经历</h2>
+        <div class="item">
+          <div class="hd"><span class="t">企业级数据看板系统 <em>· 前端负责人</em></span><span class="tm">2023.08 — 至今</span></div>
+          <div class="sub">某某科技有限公司</div>
+          <p>基于 Vue 3 + TypeScript 与 ECharts 搭建可视化看板，覆盖 10+ 业务数据模块；设计统一图表组件库与主题，页面首屏加载时间由 4.2s 优化至 1.8s，同比提升 57%；搭建自动部署与代码规范流水线，回归缺陷率下降 30%。</p>
+        </div>
+        <div class="item">
+          <div class="hd"><span class="t">校园二手交易小程序 <em>· 全栈开发</em></span><span class="tm">2022.10 — 2023.06</span></div>
+          <div class="sub">毕业设计 · 校级优秀项目</div>
+          <p>独立完成小程序前端与后端接口设计，实现商品发布、搜索、IM 沟通等功能；采用组件化开发与状态管理，代码复用率提升，项目获校级毕业设计优秀奖，上线后累计服务用户 2000+。</p>
+        </div>
+      </div>
+
+      <div class="main-sec">
+        <h2>教育经历</h2>
+        <div class="item">
+          <div class="hd"><span class="t">某某大学 <em>· 软件工程（本科）</em></span><span class="tm">2019.09 — 2023.06</span></div>
+          <div class="sub">GPA 3.7 / 4.0 · 校级奖学金 2 次</div>
+          <p>主修：数据结构、操作系统、计算机网络、数据库系统、软件工程。</p>
+        </div>
+      </div>
+
+      <div class="main-sec">
+        <h2>技能与证书</h2>
+        <div class="pills">
+          <span class="pill">Git / CI</span><span class="pill">Webpack / Vite</span>
+          <span class="pill">ECharts</span><span class="pill">RESTful API</span>
+          <span class="pill">Responsive Design</span><span class="pill">Web 性能优化</span>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

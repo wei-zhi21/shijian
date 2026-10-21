@@ -1,14 +1,15 @@
 <script setup>
 import { t } from '../i18n'
 defineProps({
-  modelValue: { type: String, default: 'modern' }
+  modelValue: { type: String, default: 'classic' }
 })
 defineEmits(['update:modelValue'])
 
 const templates = [
-  { id: 'modern', name: 'tModern', desc: 'dModern', accent: 'bg-indigo-500' },
-  { id: 'classic', name: 'tClassic', desc: 'dClassic', accent: 'bg-blue-600' },
-  { id: 'creative', name: 'tCreative', desc: 'dCreative', accent: 'bg-emerald-600' }
+  { id: 'classic', name: 'tClassic', desc: 'dClassic', accent: 'bg-blue-900' },
+  { id: 'modern', name: 'tModern', desc: 'dModern', accent: 'bg-slate-700' },
+  { id: 'creative', name: 'tCreative', desc: 'dCreative', accent: 'bg-orange-600' },
+  { id: 'data', name: 'tData', desc: 'dData', accent: 'bg-teal-600' }
 ]
 </script>
 
@@ -19,13 +20,11 @@ const templates = [
       <span class="text-xs text-slate-400">{{ t('templateHint') }}</span>
     </div>
 
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-cols-4 gap-3">
       <button
         v-for="tp in templates"
         :key="tp.id"
-        class="group rounded-lg border p-3 text-left transition
-               hover:border-indigo-300 hover:shadow-sm
-               relative overflow-hidden"
+        class="rounded-lg border p-3 text-left transition hover:border-indigo-300 hover:shadow-sm relative overflow-hidden"
         :class="modelValue === tp.id ? 'border-indigo-500 ring-2 ring-indigo-100' : 'border-slate-200'"
         @click="$emit('update:modelValue', tp.id)"
       >
@@ -36,8 +35,7 @@ const templates = [
         </div>
         <div class="text-xs text-slate-400">{{ t(tp.desc) }}</div>
         <span v-if="modelValue === tp.id"
-          class="absolute top-2 right-2 w-5 h-5 rounded-full bg-indigo-600 text-white
-                 flex items-center justify-center text-xs">✓</span>
+          class="absolute top-2 right-2 w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center text-xs">✓</span>
       </button>
     </div>
   </div>

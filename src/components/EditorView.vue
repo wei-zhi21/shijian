@@ -7,7 +7,7 @@ import { resume, save } from '../resume'
 import { t } from '../i18n'
 import { evaluateResume } from '../scoring'
 
-const activeTemplate = ref('modern')
+const activeTemplate = ref('classic')
 const savedTip = ref(false)
 let tipTimer = null
 

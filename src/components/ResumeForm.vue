@@ -27,7 +27,7 @@ function removeLang(r, i) {
   r.languages.splice(i, 1)
 }
 function addEducation(r) {
-  r.education.push({ school: '', major: '', period: '', degree: '' })
+  r.education.push({ school: '', major: '', degree: '', period: '', courses: '', gpa: '', honors: '' })
 }
 function removeEducation(r, i) {
   if (r.education.length > 1) r.education.splice(i, 1)
@@ -136,6 +136,18 @@ const sections = [
         <div>
           <label class="block text-sm text-slate-600 mb-1">{{ t('degree') }}</label>
           <input v-model="edu.degree" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" :placeholder="t('phDegree')" />
+        </div>
+        <div class="col-span-2">
+          <label class="block text-sm text-slate-600 mb-1">{{ t('courses') }}</label>
+          <input v-model="edu.courses" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" :placeholder="t('phCourses')" />
+        </div>
+        <div>
+          <label class="block text-sm text-slate-600 mb-1">{{ t('gpa') }}</label>
+          <input v-model="edu.gpa" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" :placeholder="t('phGpa')" />
+        </div>
+        <div>
+          <label class="block text-sm text-slate-600 mb-1">{{ t('honors') }}</label>
+          <input v-model="edu.honors" class="w-full border border-slate-200 rounded-lg px-3 py-2 text-sm outline-none" :placeholder="t('phHonors')" />
         </div>
       </div>
     </div>

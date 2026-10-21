@@ -6,7 +6,7 @@ const STORAGE_KEY = 'resume-generator-data'
 const defaultResume = () => ({
   basic: { name: '', phone: '', email: '', city: '' },
   intent: { position: '', salary: '', start: '' },
-  education: [{ school: '', major: '', period: '', degree: '' }],
+  education: [{ school: '', major: '', degree: '', period: '', courses: '', gpa: '', honors: '' }],
   experiences: [{ org: '', role: '', time: '', desc: '' }],
   skills: [],
   languages: [],
@@ -20,11 +20,16 @@ function load() {
     if (raw) {
       const saved = JSON.parse(raw)
       const base = defaultResume()
+      const eduDefaults = (e) =>
+        Object.assign({ school: '', major: '', degree: '', period: '', courses: '', gpa: '', honors: '' }, e)
       // 合并默认结构，避免旧数据缺字段
       return {
         basic: Object.assign({}, base.basic, saved.basic),
         intent: Object.assign({}, base.intent, saved.intent),
-        education: Array.isArray(saved.education) && saved.education.length ? saved.education : base.education,
+        education:
+          Array.isArray(saved.education) && saved.education.length
+            ? saved.education.map(eduDefaults)
+            : base.education,
         experiences: Array.isArray(saved.experiences) && saved.experiences.length ? saved.experiences : base.experiences,
         skills: Array.isArray(saved.skills) ? saved.skills : [],
         languages: Array.isArray(saved.languages) ? saved.languages : [],
