@@ -6,6 +6,7 @@ import ResumePreview from './ResumePreview.vue'
 import { resume, save } from '../resume'
 import { t } from '../i18n'
 import { evaluateResume } from '../scoring'
+import { SAMPLE_RESUME } from '../sample'
 
 const activeTemplate = ref('classic')
 const savedTip = ref(false)
@@ -17,6 +18,18 @@ function onSave() {
     clearTimeout(tipTimer)
     tipTimer = setTimeout(() => (savedTip.value = false), 2000)
   }
+}
+
+// 一键填入示例内容
+function fillSample() {
+  Object.assign(resume.basic, SAMPLE_RESUME.basic)
+  Object.assign(resume.intent, SAMPLE_RESUME.intent)
+  resume.education.splice(0, resume.education.length, ...SAMPLE_RESUME.education.map((e) => ({ ...e })))
+  resume.experiences.splice(0, resume.experiences.length, ...SAMPLE_RESUME.experiences.map((e) => ({ ...e })))
+  resume.skills.splice(0, resume.skills.length, ...SAMPLE_RESUME.skills)
+  resume.languages.splice(0, resume.languages.length, ...SAMPLE_RESUME.languages)
+  resume.summary = SAMPLE_RESUME.summary
+  onSave()
 }
 
 // 实时评分
@@ -44,7 +57,13 @@ const scoreColor = computed(() => {
             <span class="text-sm text-slate-400">{{ t('scoreOf') }}</span>
           </div>
         </div>
-        <span class="text-xs text-slate-400">{{ t('scoreHint') }}</span>
+        <div class="flex items-center gap-3">
+          <button @click="fillSample"
+            class="px-3 py-1.5 rounded-lg border border-indigo-200 text-indigo-600 text-xs font-medium hover:bg-indigo-50 transition">
+            {{ t('sampleBtn') }}
+          </button>
+          <span class="text-xs text-slate-400">{{ t('scoreHint') }}</span>
+        </div>
       </div>
       <div class="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
         <div class="h-full transition-all duration-300" :class="scoreColor"
